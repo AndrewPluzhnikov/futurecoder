@@ -59,7 +59,6 @@ __program_indented__
         def check(self):
             return "KeyError" in self.result
 
-<<<<<<< HEAD
     class dict_access2(VerbatimStep):
         """
 That doesn't work because the position of items in a dictionary usually doesn't matter.
@@ -333,8 +332,3 @@ and `letters['l']` gives `'e'` again.
 
 Soon you'll write a function to create a dictionary like `reverse` automatically,
 i.e. `reverse = swap_keys_values(letters)`."""
-=======
-
-    final_text = """
-TODO"""
->>>>>>> 5b6e57e69d7bb6334ec23740dd8f9c345acebc01
