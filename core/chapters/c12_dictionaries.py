@@ -668,3 +668,154 @@ Beautiful! There's a pattern emerging here. The two languages could be merged in
     final_text = """
     Congratulations! You've reached the end of the course so far. More is on the way!
     """
+
+#TODO: New Title probably needed
+class DictionariesContinued(Page):
+    class key_value_pairs(VerbatimStep):
+        """
+Now we'll learn how to add key-value pairs to a dictionary,
+e.g. so that we can keep track of what the customer is buying.
+Before looking at dictionaries, let's remind ourselves how to add items to a list. Run this program:
+
+    __copyable__
+    __program_indented__
+        """
+
+        program = """
+        cart = []
+        cart.append('dog')
+        cart.append('box')
+        print(cart)
+        """
+
+    class key_value_changes(VerbatimStep):
+        """
+Pretty simple. We can also change the value at an index, replacing it with a different one:
+
+    __copyable__
+    __program_indented__
+        """
+
+        predicted_output_choices = [
+            "['dog', 'box']",
+            "['box', 'cat']"
+        ]
+
+        program = """
+        cart = ['dog', 'cat']
+        cart[1] = 'box'
+        print(cart)
+        """
+
+    class key_value_list_creation_error(VerbatimStep):
+        """
+What if we used that idea to create our list in the first place?
+We know we want a list where `cart[0]` is `'dog'` and `cart[1]` is `'box'`, so let's just say that:
+
+    __copyable__
+    __program_indented__
+        """
+
+        program = """
+        cart = []
+        cart[0] = 'dog'
+        cart[1] = 'box'
+        print(cart)
+        """
+
+    class key_value_list_creation(VerbatimStep):
+        """
+Sorry, that's not allowed. For lists, subscript assignment only works for existing valid indices.
+But that's not true for dictionaries! Try this:
+
+    __copyable__
+    quantities = {}
+    quantities['dog'] = 5000000
+    quantities['box'] = 2
+    print(quantities)
+
+Note that `{}` means an empty dictionary, i.e. a dictionary with no key-value pairs.
+This is similar to `[]` meaning an empty list or `""` meaning an empty string.
+        """
+
+        predicted_output_choices = [
+            "{'dog': 5000000, 'box': 2}",
+            "{5000000: 'dog', 2: 'box'}"
+        ]
+
+        requirements = "Run `print(quantities)` where `quantities` is a dictionary created as shown above."
+
+        program_in_text = False
+
+        program = """
+        quantities = {}
+        quantities['dog'] = 5000000
+        quantities['box'] = 2
+        print(quantities)
+        """
+
+    class key_value_dictionary_creation(ExerciseStep):
+        """
+That's exactly what we need. When the customer says they want 5 million boxes,
+we can just put that information directly into our dictionary. So as an exercise, let's make a generic version of that.
+Write a function `buy_quantity(quantities)` which calls `input()` twice to get an item name and quantity from the user
+and assigns them in the `quantities` dictionary. Here's some starting code:
+
+    __copyable__
+    def buy_quantity(quantities):
+        print('Item:')
+        item = input()
+        print('Quantity:')
+        ...
+
+    def test():
+        quantities = {}
+        buy_quantity(quantities)
+        print(quantities)
+        buy_quantity(quantities)
+        print(quantities)
+
+    test()
+
+and an example of how a session should look:
+
+    Item:
+    dog
+    Quantity:
+    5000000
+    {'dog': 5000000}
+    Item:
+    box
+    Quantity:
+    2
+    {'dog': 5000000, 'box': 2}
+
+Note that `buy_quantity` should *modify* the dictionary that's passed in, and doesn't need to return anything.
+You can assume that the user will enter a valid integer for the quantity.
+        """
+
+        hints = """
+        TODO
+        """
+
+        def solution(self):
+            def buy_quantity(quantities : Dict[str, int]):
+                print('Item:')
+                item = input()
+                print('Quantity:')
+                quantity = int(input())
+                quantities[item] = quantity
+
+            return buy_quantity
+
+        @classmethod
+        def generate_inputs(cls):
+            return dict(stdin_input=['zzz', '199'], quantities={})
+
+        tests = [
+            (({'stdin_input': ['xxx', '99'], 'quantities': {}}), "Item:\n<input: xxx>\nQuantity:\n<input: 99>"),
+            ]
+
+    final_text = """
+    TODO
+    """
