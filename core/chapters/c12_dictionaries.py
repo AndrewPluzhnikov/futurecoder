@@ -668,3 +668,26 @@ Beautiful! There's a pattern emerging here. The two languages could be merged in
     final_text = """
     Congratulations! You've reached the end of the course so far. More is on the way!
     """
+
+#TODO: New Title probably needed
+class DictionariesContinued(Page):
+    class key_value_pairs(VerbatimStep):
+        """
+Now we'll learn how to add key-value pairs to a dictionary,
+e.g. so that we can keep track of what the customer is buying.
+Before looking at dictionaries, let's remind ourselves how to add items to a list. Run this program:
+
+    __copyable__
+    __program_indented__
+        """
+
+        program = """
+        cart = []
+        cart.append('dog')
+        cart.append('box')
+        print(cart)
+        """
+
+    final_text = """
+    TODO
+    """
