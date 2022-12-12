@@ -816,6 +816,7 @@ You can assume that the user will enter a valid integer for the quantity.
             (({'stdin_input': ['xxx', '99'], 'quantities': {}}), "Item:\n<input: xxx>\nQuantity:\n<input: 99>"),
             ]
 
+
     final_text = """
     TODO
     """
